@@ -1,0 +1,9 @@
+#Power supply for uC
+
+* motivation: we need to drive the uc, display, etc (+USB power output).
+  * we heard you like buck/boost converters.... :)
+* ti TPIC74100QPWPRQ1
+  * buck/boost
+  * 1.5 - 40 V in
+  * 5V out
+  * 1A
