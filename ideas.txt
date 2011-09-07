@@ -1,0 +1,101 @@
+#Power 2000
+
+##Konzept
+* Universelle Stromversorgung auf Basis eines Buck-Boost-Konverters.
+* Basiert auf LTC3780
+* Ansteuerung durch uC. 
+* angeschlossenes Akkupack (ca. Lipo, 3s, 5000mAh)
+  * 3 Betriebsmodi:
+    * ext -> out
+    * bat -> out
+    * ext -> bat
+
+##Eingang: 
+* 4-28V DC
+  * Laptopnetzteil
+  * KFZ
+  * Akkupack
+  * Solarzelle
+* ca. 10A (Sicherung)
+* An Polklemmen (mit Bananenbuchse)
+* Eingangsspannung/Strom messen
+  * constraints einstellbar
+    * solarzelle: maximum power point
+    * Imax
+    * ...
+
+##Ausgang
+* 5V 1A (USB) kurzschlussfest
+  * Apple-Kompatibel
+* 0-30V 0-5A, einstellbar durch uC + Bus (I2C?)
+
+##Hardware
+
+* Eingang
+  * Polklemmen
+  * Sicherungshalter + Sicherung (KFZ)
+  * Hohlsteckerbuchse
+
+* Ausgang
+  * USB (A, female)
+  * Extension-Verbinder
+    * http://www.reichelt.de/SUB-D-Mischkontakte/0/16/index.html?;ACTION=2;LA=2;GROUPID=3207;SID=27TP7TU38AAAIAAAtCLik0efc44995f0678be36e0e4dea45b492a
+
+* Buckboost
+  * LTC3780
+  * Strommessung: ZXCT1051?
+  * Mosfets, Dioden, etc
+
+* 5V
+  * Linearregler?
+  * USB-Buchse
+
+* uC und bedienung
+  * LPC1343?
+  * display (nokia?)
+  * 2 drehimpulsgeber mit taster
+  * buttons?
+  * leds?
+  * miniusb (flashen, interface)
+    * auch fuer PowerIn? (mit 500mA constraint)
+  * p42-referenzdesign
+
+
+##Extensions
+
+###Labornetzteil
+* U und I einstellbar am uC, Strom auf Polklemmen
+
+###Loetstation
+* sendet temperatur per Bus zu Master, Master regelt Strom
+* Din-Anschluss fuer ERSA und Weller Kolben, 24V
+
+###Balancer/Lipoloader
+* erkennt Zellenanzahl, gibt ladespannung vor
+* balancing, gibt alle zellspannungen an master
+* temperatursensor?
+
+
+###USB
+* 5* USB-Buchse, 5V, max 1A, alle einzeln Kurzschlussfest
+
+###Lade/Betriebskabel
+* u/i in speicher vorgegeben, werden per bus gesetzt, pigtail mit passendem Stecker
+
+###Last
+* einstellbare Last
+* eigene bedienelemente?
+
+###Verstaerker
+
+##Links
+battery balancer and watt-meter
+http://www.pololu.com/catalog/product/2176
+
+http://www.roboternetz.de/community/showthread.php?25210-Eigenbau-L%F6tstation/page3
+* siehe read/uniprojekt...
+
+http://www.techome.de/netzgeraete-wechselrichter/spannungswandler/universal-step-up-step-down-spannungswandler-usw.html
+
+http://audio.peufeu.com/node/66
+Schaltung für Strom und Spannungsbegreznung fuer LTC3780
